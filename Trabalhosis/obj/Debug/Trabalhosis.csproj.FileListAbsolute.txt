@@ -1,0 +1,11 @@
+C:\Users\Rubens\source\repos\Trabalhosis\Trabalhosis\bin\Debug\Trabalhosis.exe
+C:\Users\Rubens\source\repos\Trabalhosis\Trabalhosis\bin\Debug\Trabalhosis.pdb
+C:\Users\Rubens\source\repos\Trabalhosis\Trabalhosis\obj\Debug\Trabalhosis.csprojAssemblyReference.cache
+C:\Users\Rubens\source\repos\Trabalhosis\Trabalhosis\obj\Debug\Trabalhosis.exe
+C:\Users\Rubens\source\repos\Trabalhosis\Trabalhosis\obj\Debug\Trabalhosis.pdb
+C:\Users\franc\source\repos\Trabalhosis\Trabalhosis\bin\Debug\Trabalhosis.exe
+C:\Users\franc\source\repos\Trabalhosis\Trabalhosis\bin\Debug\Trabalhosis.pdb
+C:\Users\franc\source\repos\Trabalhosis\Trabalhosis\obj\Debug\Trabalhosis.csprojAssemblyReference.cache
+C:\Users\franc\source\repos\Trabalhosis\Trabalhosis\obj\Debug\Trabalhosis.exe
+C:\Users\franc\source\repos\Trabalhosis\Trabalhosis\obj\Debug\Trabalhosis.pdb
+C:\Users\Rubens\source\repos\Trabalhosis\Trabalhosis\obj\Debug\Trabalhosis.csproj.CopyComplete
