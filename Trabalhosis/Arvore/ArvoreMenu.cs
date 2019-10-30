@@ -21,7 +21,6 @@ namespace Trabalhosis
                 Console.WriteLine("------------------MENU--------------------\n");
                 Console.WriteLine("1- Criar arvore.");
                 Console.WriteLine("2- Buscar.");
-                Console.WriteLine("3- Escrever arvore.");
                 Console.WriteLine("0- Sair ");
                 Console.WriteLine("Digite sua opcao: ");
                 op = Convert.ToInt32(Console.ReadLine());
@@ -33,6 +32,7 @@ namespace Trabalhosis
                         string aux, fim;
 
                         long end = 0;
+                        int cont = 0;
 
                         FileStream le = new FileStream(Environment.CurrentDirectory + @"\main.dat", FileMode.Open);
                         do
@@ -41,22 +41,27 @@ namespace Trabalhosis
                             aux = new string(Encoding.UTF8.GetChars(hashtags));
                             fim = aux.Substring(517, 100);
                             string[] hashstring = fim.Split('#');
+                            fim.Trim();
                             foreach (var item in hashstring)
                             {
-                                tree.Inserir(item, end);
+                                if (item.Length >= 2)
+                                {
+                                    tree.Inserir(item, end);
+                                }
                             }
+                            cont++;
+                            end +=620;
 
-                            end+=620;
-                        } while (le.CanRead);
+                        } while (le.CanRead && cont != 32);
                         le.Close();
+                        Console.ReadKey();
+                        tree.PrintArvore(tree.Root);
                         break;
                     case 2:
                         Console.WriteLine("Informe a hashtag: ");
                         string hashtag = Console.ReadLine();
                         tree.Busca(tree.Root, hashtag);
-                        break;
-                    case 3:
-                        tree.Imprimir(tree.Root);
+                        Console.ReadKey();
                         break;
                 }
             } while (op != 0);
