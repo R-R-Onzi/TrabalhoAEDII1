@@ -6,16 +6,23 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Trabalhosis
 {
-    [Serializable]
+
     public class IndiceHash
     {
-        public DateTime Data { get; set; }
+        public int Data { get; set; }
 
         public long pos { get; set; }
 
+        
         public IndiceHash(string b,int a)
         {
-            this.Data = Convert.ToDateTime(Data);
+            this.Data = Convert.ToInt32(b);
+            this.pos = a;
+        }
+
+        public IndiceHash(int b, long a)
+        {
+            this.Data = b;
             this.pos = a;
         }
 
@@ -37,5 +44,6 @@ namespace Trabalhosis
             s.Close();
             return c;
         }
+
     }
 }
