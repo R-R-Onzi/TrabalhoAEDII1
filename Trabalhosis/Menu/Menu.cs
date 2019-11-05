@@ -32,7 +32,7 @@ namespace Trabalhosis
             MenuOption menuOption = new MenuOption
             {
                 Number = 3,
-                DisplayText = "Digite um Numero e a quantidade de registros requeridos em ordem",
+                DisplayText = "Encontra Id",
                 Action = new CheeseBacon()
             };
 
@@ -53,7 +53,7 @@ namespace Trabalhosis
             {
                 Number = 6,
                 DisplayText = "Arvore",
-                Action = new Arvore()
+                Action = new ArvoreMenu()
             };
             MenuOption Exit = new MenuOption
             {
