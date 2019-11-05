@@ -32,7 +32,7 @@ namespace Trabalhosis
             MenuOption menuOption = new MenuOption
             {
                 Number = 3,
-                DisplayText = "Encontra Id",
+                DisplayText = "Digite um Numero e a quantidade de registros requeridos em ordem",
                 Action = new CheeseBacon()
             };
 
@@ -99,5 +99,9 @@ namespace Trabalhosis
 
             return sb.ToString();
         }
+
+     
     }
+
+    
 }
