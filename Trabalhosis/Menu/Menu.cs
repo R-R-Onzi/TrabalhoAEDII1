@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using Trabalhosis.Menu;
+using Trabalhosis.Data;
 
 namespace Trabalhosis
 {
@@ -33,7 +34,7 @@ namespace Trabalhosis
             {
                 Number = 3,
                 DisplayText = "Digite um Numero e a quantidade de registros requeridos em ordem",
-                Action = new CheeseBacon()
+                Action = new FindId()
             };
 
             MenuOption ler = new MenuOption
@@ -55,6 +56,18 @@ namespace Trabalhosis
                 DisplayText = "Arvore",
                 Action = new ArvoreMenu()
             };
+            MenuOption Babon = new MenuOption
+            {
+                Number = 7,
+                DisplayText = "Hash yeah",
+                Action = new CheeseBacon()
+            };
+            MenuOption These = new MenuOption
+            {
+                Number = 8,
+                DisplayText = "Mostra a resposta da tese: se usa mais Brexit ou brexit",
+                Action = new Thesis()
+            };
             MenuOption Exit = new MenuOption
             {
                 Number = 0,
@@ -68,6 +81,8 @@ namespace Trabalhosis
             Options.Add(ler);
             Options.Add(derp);
             Options.Add(arvre);
+            Options.Add(Babon);
+            Options.Add(These);
             Options.Add(Exit);
         }
 
