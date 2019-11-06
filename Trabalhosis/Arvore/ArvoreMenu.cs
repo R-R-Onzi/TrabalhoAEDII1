@@ -21,9 +21,9 @@ namespace Trabalhosis
                 Console.WriteLine("------------------MENU--------------------\n");
                 Console.WriteLine("1- Criar arvore.");
                 Console.WriteLine("2- Buscar.");
-                Console.WriteLine("3- Escrever arvore.");
                 Console.WriteLine("0- Sair ");
-                Console.WriteLine("Digite sua opcao: ");
+                Console.WriteLine("\n");
+                Console.WriteLine("DIGITE SUA OPÇÃO: ");
                 op = Convert.ToInt32(Console.ReadLine());
 
                 switch (op)
@@ -33,32 +33,37 @@ namespace Trabalhosis
                         string aux, fim;
 
                         long end = 0;
-                        int count=0;
+                        int cont = 0;
+
                         FileStream le = new FileStream(Environment.CurrentDirectory + @"\main.dat", FileMode.Open);
                         do
                         {
-
                             le.Read(hashtags, 0, 620);
                             aux = new string(Encoding.UTF8.GetChars(hashtags));
                             fim = aux.Substring(517, 100);
+                            fim.Trim();
                             string[] hashstring = fim.Split('#');
+                            
                             foreach (var item in hashstring)
                             {
-                                tree.Inserir(item, end);
+                                if (item.Length >= 2)
+                                {
+                                    tree.Inserir(item, end);
+                                }
                             }
+                            cont++;
+                            end +=620;
 
-                            end += 620;
-                            count ++;
-                        } while (le.CanRead&& count !=10);
+                        } while (le.CanRead && cont<1000);
                         le.Close();
+                        Console.ReadKey();
                         break;
                     case 2:
+                        Console.Clear();
                         Console.WriteLine("Informe a hashtag: ");
                         string hashtag = Console.ReadLine();
                         tree.Busca(tree.Root, hashtag);
-                        break;
-                    case 3:
-                        tree.Imprimir(tree.Root);
+                        Console.ReadKey();
                         break;
                 }
             } while (op != 0);
