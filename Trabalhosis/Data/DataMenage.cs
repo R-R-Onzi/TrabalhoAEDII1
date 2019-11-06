@@ -266,37 +266,60 @@ namespace Trabalhosis
 
         }
 
-        public static void AgoraVai(List<long> e, HashSet<IndiceHash> ind)
+        public static void AgoraVai(List<long> e, Dictionary<string, LinkedList<long>> ind)
         {
             StreamReader stream = new StreamReader(File.OpenRead(Environment.CurrentDirectory + @"\texto.dat"));
             BinaryWriter writer = new BinaryWriter(File.OpenWrite(Environment.CurrentDirectory + @"\main.dat"));
-
+            
             do
             {
+               
                 string all;
                 string[] sub;
                 all = stream.ReadLine();
                 sub = all.Split(';');
                 sub[0].Trim();
                 sub[0] = Regex.Replace(sub[0], @"[\D]", "");
-                ind.Add(new IndiceHash(sub[0], Convert.ToInt32(sub[0])));
+                long pos = writer.Seek(0, SeekOrigin.Current);
+                if (sub[5].Contains('#'))
+                {
+                    string[] tamanhos = sub[5].Split('#');
+                    for (int i = 1; i < tamanhos.Length; i++)
+                    {
+                        if (!ind.ContainsKey(tamanhos[i]))
+                        {
+                            ind.Add(tamanhos[i], new LinkedList<long>());
+                            ind[tamanhos[i]].AddFirst(pos);
+                        }
+                        else
+                        {
+                            ind[tamanhos[i]].AddLast(pos);
+                        }
+                            
+                    }
+                    
+                }
                 if (Convert.ToInt32(sub[0]) % 2500 == 0)
                 {
-                    e.Add(writer.Seek(0, SeekOrigin.Current));
+                    e.Add(pos);
                 }
                 writer.Write(DataMenage.ToLen(sub[0], 20));
 
                 sub[1].Trim();
                 sub[1] = Regex.Replace(sub[1], @"[\W]", "");
                 writer.Write(DataMenage.ToLen(sub[1], 40));
-
-                sub[2].Trim();
-                sub[2] = Regex.Replace(sub[2], @"[^\w]+", "");
+                
+               
+                sub[2] = Regex.Replace(sub[2], @"[\W]+", "");
+                
                 writer.Write(DataMenage.ToLen(sub[2], 400));
                 sub[3].Trim();
-                sub[3] = Regex.Replace(sub[3], @"[^\w]+", "");
+                
+                
+                sub[3] = Regex.Replace(sub[3], @"[^\w]", "");
                 
                 writer.Write(DataMenage.ToLen(sub[3], 40));
+                
                 sub[4].Trim();
                 sub[4]=sub[4].Substring(0, 10);
                 
@@ -305,10 +328,8 @@ namespace Trabalhosis
                 sub[5].Trim();
                 
                
-                writer.Write(DataMenage.ToLen(sub[5],20));
-                sub[6].Trim();
+                writer.Write(DataMenage.ToLen(sub[5],100));
                 
-                writer.Write(DataMenage.ToLen(sub[6], 100));
 
                 writer.Write(Environment.NewLine);
                 
@@ -321,6 +342,21 @@ namespace Trabalhosis
 
 
         } 
+
+        public static void FazDic(BinaryWriter writer,Dictionary<string,LinkedList<long>> ind)
+        {
+            foreach (var item in ind)
+            {
+                writer.Write(string.Format(($"{item.Key.ToString(),15}")));
+                foreach (var items in item.Value)
+                {
+                    
+                    writer.Write(string.Format(($"{items.ToString(),15}")));
+                }
+                
+                writer.Write(Environment.NewLine);
+            }
+        }
     }
 
    

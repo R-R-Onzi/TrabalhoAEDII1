@@ -16,7 +16,7 @@ namespace Trabalhosis
                 File.Delete(Environment.CurrentDirectory+@"\main.dat");
                 File.Delete(Environment.CurrentDirectory+@"\Sec.dat");
                 File.Delete(Environment.CurrentDirectory+@"\Prim.dat");
-                
+                File.Delete(Environment.CurrentDirectory + @"\Dic1.dat");
             }
            
         }
