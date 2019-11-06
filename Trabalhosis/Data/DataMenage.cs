@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using xline.IO;
+
 
 
 namespace Trabalhosis
@@ -286,8 +286,10 @@ namespace Trabalhosis
                     string[] tamanhos = sub[5].Split('#');
                     for (int i = 1; i < tamanhos.Length; i++)
                     {
+                        tamanhos[i]=tamanhos[i].TrimEnd();
                         if (!ind.ContainsKey(tamanhos[i]))
                         {
+                            
                             ind.Add(tamanhos[i], new LinkedList<long>());
                             ind[tamanhos[i]].AddFirst(pos);
                         }
@@ -345,9 +347,12 @@ namespace Trabalhosis
 
         public static void FazDic(BinaryWriter writer,Dictionary<string,LinkedList<long>> ind)
         {
+            
             foreach (var item in ind)
             {
                 writer.Write(string.Format(($"{item.Key.ToString(),15}")));
+
+                
                 foreach (var items in item.Value)
                 {
                     
