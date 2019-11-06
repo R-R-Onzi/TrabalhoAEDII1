@@ -9,7 +9,7 @@ namespace Trabalhosis
 {
     public class ArvoreBin
     {
-        NodeArvore raiz = new NodeArvore();
+        public NodeArvore raiz = new NodeArvore();
         int quantidade = 0;
 
         public NodeArvore Root
@@ -89,7 +89,7 @@ namespace Trabalhosis
                     }
                 }
 
-                if (hashtag.CompareTo(node.gethashtag) == 0)
+                if (hashtag.Equals(node.gethashtag))
                 {
                     node.addList(adr);
                     return null;
@@ -108,24 +108,21 @@ namespace Trabalhosis
             }
             else
             {
-                if (hashtag.CompareTo(node.gethashtag) == 0)
+                if (hashtag.Equals(node.gethashtag))
                 {
-                    FileStream binary = new FileStream(Environment.CurrentDirectory + @"\main.dat", FileMode.Open);
+                    string path = Environment.CurrentDirectory + @"\texto.dat";
+                    BinaryReader binary = new BinaryReader(File.OpenRead(path));
 
-                    byte[] mens = new byte[2000];
-                    string aux, fim;
+                    char[] mens = new char[440];
 
                     foreach (var end in node.end_)
                     {
-                        binary.Seek(end, SeekOrigin.Begin);
-                        binary.Read(mens, 0, 620);
-                        aux = new string(Encoding.UTF8.GetChars(mens));
-                        fim = aux.Substring(0, 516);
-                        Console.WriteLine(fim);
+                        Int32 pos = Convert.ToInt32(end);
+                        binary.Read(mens, pos, 440);
+                        Console.WriteLine(mens);
                     }
-                    binary.Close();
                 }
-                else if (hashtag.CompareTo(node.gethashtag) < 0)
+                else if (hashtag.CompareTo(node.gethashtag) > 0)
                 {
                     Busca(node.getEsquerda, hashtag);
                 }
@@ -137,26 +134,25 @@ namespace Trabalhosis
             return null;
         }
 
-        public void PrintArvore(NodeArvore node)
+        public void Imprimir(NodeArvore node)
         {
-            LinkedList<string> vs = new LinkedList<string>();
+            Queue<NodeArvore> q = new Queue<NodeArvore>();
+            q.Enqueue(node);
 
-            NodeArvore aux;
-            NodeArvore aux1;
 
-            vs.AddLast(node.gethashtag);
-            aux = node.getEsquerda;
-            //aux1 = node.getDireita;
-
-            do
+            while (q.Count != 0)
             {
-                vs.AddLast(aux.gethashtag);
-                aux = node.getEsquerda;
-            } while (aux != null);
 
-            foreach (var item in vs)
-            {
-                Console.WriteLine(item);
+                Console.WriteLine((node = q.Dequeue() as NodeArvore).gethashtag);
+
+                if (node.getEsquerda != null)
+                {
+                    q.Enqueue(node.getEsquerda as NodeArvore);
+                }
+                if (node.getDireita != null)
+                {
+                    q.Enqueue(node.getDireita as NodeArvore);
+                }
             }
         }
     }

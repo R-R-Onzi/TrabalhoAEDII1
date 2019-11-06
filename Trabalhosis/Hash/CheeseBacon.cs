@@ -17,7 +17,7 @@ namespace Trabalhosis
             
                 FazHash.HashArk(indiceHash);
                 Console.Clear();
-                int dat=20;
+                int dat=1;
             do
             {
                 Console.WriteLine("Digite a data:");
@@ -27,7 +27,7 @@ namespace Trabalhosis
                 {
                     dat = Int32.Parse(num);
 
-                    int has = MathB.Hash(dat);
+                    int has = MathB.Hash(MathB.Separator(dat,6));
                     if (indiceHash[has] != null)
                     {
                         using (StreamReader stream = new StreamReader(File.OpenRead(Environment.CurrentDirectory + @"\main.dat")))
@@ -50,6 +50,8 @@ namespace Trabalhosis
 
 
             } while (dat != 0);
+            
+    
         }
     }
 }

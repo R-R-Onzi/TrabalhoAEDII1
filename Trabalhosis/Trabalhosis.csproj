@@ -54,11 +54,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arvore\ArvoreMenu.cs" />
     <Compile Include="Arvore\ArvoreBin.cs" />
-    <Compile Include="Arvore\BitArvore.cs" />
+    <Compile Include="Data\Thesis.cs" />
     <Compile Include="Hash\CheeseBacon.cs" />
     <Compile Include="Data\Destroy.cs" />
     <Compile Include="Data\DataMenage.cs" />
+    <Compile Include="Hash\FindId.cs" />
+    <Compile Include="Math\MathB.cs" />
     <Compile Include="Menu\FazCerto.cs" />
     <Compile Include="Menu\Itens\Exit.cs" />
     <Compile Include="Data\Faz.cs" />
