@@ -10,7 +10,7 @@ namespace Trabalhosis
     {
         public void Run()
         {
-            BinaryReader reader = new BinaryReader(File.OpenRead(Environment.CurrentDirectory + @"\texto.dat"));
+            BinaryReader reader = new BinaryReader(File.OpenRead(Environment.CurrentDirectory + @"\Main.dat"));
             try
             {
                 do

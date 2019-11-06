@@ -54,8 +54,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arvore\ArvoreBin %281%29.cs" />
     <Compile Include="Arvore\ArvoreMenu.cs" />
-    <Compile Include="Arvore\ArvoreBin.cs" />
     <Compile Include="Data\Thesis.cs" />
     <Compile Include="Hash\CheeseBacon.cs" />
     <Compile Include="Data\Destroy.cs" />
