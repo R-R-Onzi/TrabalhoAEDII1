@@ -54,7 +54,7 @@ namespace Trabalhosis
                             cont++;
                             end +=620;
 
-                        } while (le.CanRead && cont<1000);
+                        } while (le.CanRead && cont<500);
                         le.Close();
                         Console.ReadKey();
                         break;
