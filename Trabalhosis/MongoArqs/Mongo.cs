@@ -3,26 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
 
-namespace Trabalhosis
+namespace Trabalhosis.MongoArqs
 {
-    class Program
+    class Mongo : IMenuAction
     {
-        static void Main(string[] args)
-        { 
-
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.BackgroundColor = ConsoleColor.Magenta;
+        public void Run()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.BackgroundColor = ConsoleColor.Black;
             do
             {
-                
+
                 Console.Clear();
-                Menus menu = new Menus();
+                MenuM menu = new MenuM();
                 Console.WriteLine(menu);
                 string entradadoUsuario = Console.ReadLine();
                 menu.ParseAndDestroy(entradadoUsuario);
-                
+
 
             } while (true);
         }
