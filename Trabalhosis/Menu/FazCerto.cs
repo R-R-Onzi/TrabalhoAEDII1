@@ -11,9 +11,11 @@ namespace Trabalhosis.Menu
     {
         public void Run()
         {
-            HashSet<IndiceHash> ind = new HashSet<IndiceHash>();
-            string path1 = Environment.CurrentDirectory + @"\Sec.dat";
-            string path2 = Environment.CurrentDirectory + @"\Prim.dat";
+            Dictionary<string,LinkedList<long>> ind = new Dictionary<string, LinkedList<long>>();
+            string path2 = Environment.CurrentDirectory + @"\Sec.dat";
+            string path1 = Environment.CurrentDirectory + @"\Prim.dat";
+            string pathdic1 = Environment.CurrentDirectory + @"\Dic1.dat";
+            
             List<long> e = new List<long>();
             List<long> ee = new List<long>();
             DataMenage.AgoraVai(e,ind);
@@ -27,6 +29,11 @@ namespace Trabalhosis.Menu
             BinaryWriter bins = new BinaryWriter(File.Open(path2, FileMode.Append));
             DataMenage.FazSec(bins, ee);
             bins.Close();
+            BinaryWriter bin1 = new BinaryWriter(File.Open(pathdic1, FileMode.Append));
+            DataMenage.FazDic(bin1,ind);
+            bin1.Close();
+            
+
 
         }
     }
